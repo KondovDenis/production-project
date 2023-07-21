@@ -3,6 +3,7 @@ import { Route, Routes} from "react-router-dom";
 import MainPage from "../../../../pages/MainPage/ui/MainPage";
 import AboutPage from "../../../../pages/AboutPage/ui/AboutPage";
 import { routerConfig } from "../../../../shared/config/routeConfig/routeConfig";
+import { PageLoader } from "../../../../widgets/PageLoader";
 
 
 
@@ -10,7 +11,7 @@ const AppRouter = () =>{
 
 
     return(
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<PageLoader></PageLoader>}>
             <Routes>
                 {Object.values(routerConfig).map(({element, path})=>(
                         <Route key={path} path={path} element={
