@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import './style/index.scss'
 import { Route, Routes, Link } from "react-router-dom";
 import AboutPage from "../pages/AboutPage/ui/AboutPage";
@@ -21,6 +21,14 @@ import { LangSwitcher } from "../widgets/LangSwitcher";
 const App = () =>{
 
     const {theme} = useTheme()
+
+    useEffect( () => {
+        if(Math.random()< 0.5){
+            throw new Error()
+        }
+    }
+
+    )
 
     return(
         <div className={classNames('app', {}, [theme])}>
