@@ -1,10 +1,8 @@
-.app{
-
-    --bg-color: rgb(207, 207, 207);
+:root {
+    --bg-color: #e8e8ea;
     --inverted-bg-color: #090949;
-    --inverted-primary-color: rgb(12, 24, 139);
-    --inverted-secondary-color: rgb(5, 26, 249);
-    --primary-color: rgb(17, 152, 17);
-    --secondary-color: rgb(9, 225, 9);
-
+    --primary-color: #0232c2;
+    --secondary-color: #0449e0;
+    --inverted-primary-color: #049604;
+    --inverted-secondary-color: #04ff04;
 }
