@@ -1,9 +1,9 @@
-name: testing, building
+name: pipeline
 on: 
   push:
     branches: [master]
   pull_request:
-    branches: [maser]
+    branches: [master]
 jobs:
   pipeline:
     runs-on: ubuntu-latest
