@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [20.x]
+        node_version: [20.5.0]
     steps:
       - uses: actions/checkout@v2
         name: Staring Node.js ${{matrix.node_version}}
