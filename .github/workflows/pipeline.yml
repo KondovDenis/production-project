@@ -22,3 +22,7 @@ jobs:
         run: npm run build:prod          
       - name: testing       
         run: npm run test:unit
+      - name: screenshot testing
+        run: npm run storybook:build
+      - name: screenshot testing
+        run: npm run test:ui:ci
