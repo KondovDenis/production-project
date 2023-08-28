@@ -10,7 +10,7 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki test approve",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "storybook": "storybook dev -p 6006  -c./config/storybook",
     "storybook:build": "storybook build -c./config/storybook"
   },
@@ -68,6 +68,7 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
+    "concurrently": "^8.2.1",
     "fs-web": "^1.0.1",
     "fs.promises": "^0.1.2",
     "i18next": "^23.2.6",
