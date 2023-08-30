@@ -6,7 +6,7 @@ on:
     branches: [main]
 jobs:
   pipeline:
-    runs-on: macos-13.5.1
+    runs-on: macos-13
     strategy:
       matrix:
         node_version: [20.5.0]
