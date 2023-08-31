@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: chromaui/action@v3
+      - uses: chromaui/action@v1
         with:
           projectToken: chpt_de97e0e4bbed72c
       - name: install modules
