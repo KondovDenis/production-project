@@ -6,7 +6,8 @@ import React from "react"
 
 
 interface LangSwitcherProps {
-    className?: string
+    className?: string;
+    short?: boolean;
 }
 
 
@@ -18,6 +19,6 @@ export const LangSwitcher = ({className}:LangSwitcherProps) => {
     }
 
     return (
-            <Button className={classNames(cls.LangSwitcher, {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>{t('Перевод')}</Button>
+            <Button className={classNames(cls.LangSwitcher, {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>{t(i18n.language === 'ru'? 'EN':'RU')}</Button>
     )
 }
