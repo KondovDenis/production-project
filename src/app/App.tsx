@@ -10,25 +10,16 @@ import { classNames } from "../shared/lib/classNames/classNames";
 import { AppRouter } from "./providers/router";
 import { Navbar } from "../widgets/Navbar";
 import { Sidebar } from "../widgets/Sidebar";
-import { useTranslation } from "react-i18next";
-import { LangSwitcher } from "../widgets/LangSwitcher";
-
-
-
+import { Modal } from "../shared/ui/Modal/Modal";
+import { Button } from "../shared/ui/Button/Button";
 
 
 
 const App = () =>{
 
     const {theme} = useTheme()
+    
 
-    useEffect( () => {
-        if(Math.random()< 0.5){
-            throw new Error()
-        }
-    }
-
-    )
 
     return(
         <div className={classNames('app', {}, [theme])}>
