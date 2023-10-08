@@ -67,6 +67,7 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.6",
     "concurrently": "^8.2.1",
     "fs-web": "^1.0.1",
     "fs.promises": "^0.1.2",
@@ -75,6 +76,7 @@
     "i18next-http-backend": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^13.0.1"
+    "react-i18next": "^13.0.1",
+    "react-redux": "^8.1.3"
   }
 }
