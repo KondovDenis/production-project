@@ -2,6 +2,7 @@ import React, { ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 import { classNames } from '../../lib/classNames/classNames';
+import { useTheme } from '../../../app/providers/ThemeProvider';
 
 
 interface ModalProps {
@@ -25,6 +26,10 @@ export const Modal = (props:ModalProps) => {
         [cls.opened]: isOpen,
 
     }
+
+
+    const {theme} = useTheme()
+
 
     const closeHandler = useCallback( () =>{
 	
