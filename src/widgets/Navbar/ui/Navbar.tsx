@@ -10,6 +10,7 @@ import { Button } from "../../../shared/ui/Button/Button";
 import { useState } from "react";
 import { ThemeButton } from "../../../shared/ui/Button/Button";
 import { Modal } from "../../../shared/ui/Modal/Modal";
+import { LoginModal } from "../../../features/AuthByUsername";
 
 
 
@@ -26,19 +27,25 @@ export const Navbar = ({className}:NavbarProps) => {
 
     const [isAuthModal, setIsAuthModal] = useState(false)
 
-    const onToggleModal = useCallback( () =>{
+    const onCloseModal = useCallback( () =>{
        
-       setIsAuthModal((prev)=>!prev)
+       setIsAuthModal(false)
 
        }
     ,[])
+
+    const onShowModal = useCallback(()=>{
+
+	setIsAuthModal(true)
+
+    }, [])
 
     const [isOpen, setIsOpen] = useState(false)
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>            
-	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onToggleModal}>{t('Войти')}</Button>
-           <Modal isOpen={isAuthModal} onClose={onToggleModal}>****** Fortes fortuna adivuat *****</Modal>
+	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onShowModal}>{t('Войти')}</Button>
+	    <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>
 	    <div className={cls.links}>
                 <AppLink theme = {AppLinkTheme.PRIMARY} to={RoutePath.about} className={cls.aboutLink}>{t('О сайте')}</AppLink>
             </div>
