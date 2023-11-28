@@ -11,7 +11,8 @@ import { useState } from "react";
 import { ThemeButton } from "../../../shared/ui/Button/Button";
 import { Modal } from "../../../shared/ui/Modal/Modal";
 import { LoginModal } from "../../../features/AuthByUsername";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAuthData, userActions } from "../../../entities/User";
 
 
 
@@ -24,8 +25,12 @@ interface NavbarProps {
 export const Navbar = ({className}:NavbarProps) => {
     
     const {t} = useTranslation('navbar')
+    
+    const authData = useSelector(getUserAuthData)
 
     const [isAuthModal, setIsAuthModal] = useState(false)
+
+    const dispatch = useDispatch()
 
     const onCloseModal = useCallback( () =>{
        
@@ -40,9 +45,29 @@ export const Navbar = ({className}:NavbarProps) => {
 
     }, [])
 
+    const onLogout = useCallback(() =>{
+
+    	dispatch(userActions.logout())
+
+    }, [dispatch])
+
     const [isOpen, setIsOpen] = useState(false)
 
-    return (
+    if(authData){
+
+
+    return(
+	<div className={classNames(cls.navbar, {}, [className])}>
+	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onLogout}>{t('Выйти')}</Button>
+	   <div className={cls.links}>
+                <AppLink theme = {AppLinkTheme.PRIMARY} to={RoutePath.about} className={cls.aboutLink}>{t('О сайте')}</AppLink>
+            </div>
+	</div>
+	)
+    }
+
+
+    return(
         <div className={classNames(cls.navbar, {}, [className])}>            
 	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onShowModal}>{t('Войти')}</Button>
 	    <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>

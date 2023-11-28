@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack server",
+    "start:dev:server": "node ./json-server/index.js",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
@@ -69,6 +70,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.6",
+    "axios": "^1.6.2",
     "concurrently": "^8.2.1",
     "fs-web": "^1.0.1",
     "fs.promises": "^0.1.2",
