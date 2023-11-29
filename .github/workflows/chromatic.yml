@@ -18,9 +18,9 @@ jobs:
       #- name: Publish to Chromatic
         #uses: chromaui/action@v1
         # Chromatic GitHub Action options
-        with:
+        #with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: chpt_de97e0e4bbed72c
+          #projectToken: chpt_de97e0e4bbed72c
       - name: Build production project
         run: npm run build:prod
       - name: Unit tests
