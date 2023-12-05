@@ -70,7 +70,7 @@ export const Navbar = ({className}:NavbarProps) => {
     return(
         <div className={classNames(cls.navbar, {}, [className])}>            
 	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onShowModal}>{t('Войти')}</Button>
-	    <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>
+	    {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>}
 	    <div className={cls.links}>
                 <AppLink theme = {AppLinkTheme.PRIMARY} to={RoutePath.about} className={cls.aboutLink}>{t('О сайте')}</AppLink>
             </div>
