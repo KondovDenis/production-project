@@ -7,6 +7,7 @@ import { loginByUsername } from './loginByUsername';
 
 jest.mock('axios');
 
+//@ts-ignore
 const mockedAxios = jest.mocked(axios, true); 
 
 describe('loginByUsername.test', () => {
