@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes, useEffect, useState } from "react";
 import { classNames } from "../../lib/classNames/classNames";
 import cls from "./Input.module.scss"
 import { useRef } from "react";
-
+import { memo } from "react";
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
@@ -18,7 +18,7 @@ interface InputProps extends HTMLInputProps{
 
 
 
-export const Input = (props:InputProps) =>{
+export const Input = memo((props:InputProps) =>{
 
 	const  ref = useRef<HTMLInputElement>()
 
@@ -70,4 +70,4 @@ export const Input = (props:InputProps) =>{
 	    </div>
 
 	)
-}
+})

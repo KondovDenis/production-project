@@ -5,6 +5,7 @@ import { LoginSchema } from "../../../../features/AuthByUsername";
 import { ReducersMapObject } from "@reduxjs/toolkit";
 import { Reducer } from "@reduxjs/toolkit";
 import { AnyAction } from "@reduxjs/toolkit";
+import { ProfileSchema } from "../../../../entities/Profile";
 
 
 
@@ -18,6 +19,7 @@ export interface StateSchema{
     counter: CounterSchema;
     user: UserSchema;
     loginForm?: LoginSchema;
+    profile?: ProfileSchema;
 }
 
 

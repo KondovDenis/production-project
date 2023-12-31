@@ -13,7 +13,7 @@ import { Modal } from "../../../shared/ui/Modal/Modal";
 import { LoginModal } from "../../../features/AuthByUsername";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAuthData, userActions } from "../../../entities/User";
-
+import { memo } from "react";
 
 
 
@@ -22,7 +22,7 @@ interface NavbarProps {
     className?: string
 }
 
-export const Navbar = ({className}:NavbarProps) => {
+export const Navbar = memo(({className}:NavbarProps) => {
     
     const {t} = useTranslation('navbar')
     
@@ -59,9 +59,6 @@ export const Navbar = ({className}:NavbarProps) => {
     return(
 	<div className={classNames(cls.navbar, {}, [className])}>
 	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onLogout}>{t('Выйти')}</Button>
-	   <div className={cls.links}>
-                <AppLink theme = {AppLinkTheme.PRIMARY} to={RoutePath.about} className={cls.aboutLink}>{t('О сайте')}</AppLink>
-            </div>
 	</div>
 	)
     }
@@ -71,9 +68,6 @@ export const Navbar = ({className}:NavbarProps) => {
         <div className={classNames(cls.navbar, {}, [className])}>            
 	   <Button theme={ThemeButton.CLEAR} className={cls.login} onClick={onShowModal}>{t('Войти')}</Button>
 	    {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>}
-	    <div className={cls.links}>
-                <AppLink theme = {AppLinkTheme.PRIMARY} to={RoutePath.about} className={cls.aboutLink}>{t('О сайте')}</AppLink>
-            </div>
         </div>
     )
-}
+})

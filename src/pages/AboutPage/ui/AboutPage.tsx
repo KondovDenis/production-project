@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageLoader } from '../../../widgets/PageLoader';
+import { memo } from 'react';
 
 
 
-
-const AboutPage = () => {
+const AboutPage = memo(() => {
 
     const {t} = useTranslation('about')
 
@@ -14,7 +14,7 @@ const AboutPage = () => {
             {t('О сайте')}
         </div>
     )
-}
+})
 
 
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BugButton } from '../../../app/providers/ErrorBoundary/ui/BugButton';
 import { Counter } from '../../../entities/Counter';
+import { memo } from 'react';
 
 
-
-const MainPage = () => {
+const MainPage = memo(() => {
 
     const {t} = useTranslation('main')
 
@@ -15,7 +15,7 @@ const MainPage = () => {
             {t('Главная страница')}
 	</div>
     )
-}
+})
 
 
 
