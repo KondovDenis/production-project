@@ -6,7 +6,7 @@ import cls from "./Sidebar.module.scss"
 import { SidebarItemType } from "../Sidebar/model/item";
 import { memo } from "react";
 import { classNames } from "../../../../shared/lib/classNames/classNames";
-
+import React from "react";
 
 
 interface SidebarItemProps{
