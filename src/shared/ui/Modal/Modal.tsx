@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
-import { classNames } from '../../lib/classNames/classNames';
+import { Mods, classNames } from '../../lib/classNames/classNames';
 import { useTheme } from '../../../app/providers/ThemeProvider';
 
 
@@ -24,7 +24,7 @@ export const Modal = (props:ModalProps) => {
     const {className, children, isOpen, onClose, lazy} = props
    
     const [isMounted, setIsMounted] = useState(false)
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
 
     }

@@ -20,7 +20,7 @@ interface InputProps extends HTMLInputProps{
 
 export const Input = memo((props:InputProps) =>{
 
-	const  ref = useRef<HTMLInputElement>()
+	const  ref = useRef<HTMLInputElement>(null)
 
 	const [isFocused, setIsFocused] = useState(false)
 
@@ -62,7 +62,7 @@ export const Input = memo((props:InputProps) =>{
 	return(
 
 	    <div className={classNames(cls.InputWrapper, {}, [className])}>
-	        {placeholder&&(<div className={cls.placeholder}>{`${placeholder}`}</div>)}
+	        {placeholder&&(<div className={cls.placeholder}>{`${placeholder} >`}</div>)}
 		<div className={cls.caretWrapper}>
 		    <input ref={ref} type={type} value={value} onChange={onChangeHandler} className={cls.input} onBlur={onBlur} onFocus={onFocus} onSelect={onSelect} {...otherProps}/>
 	    	    {isFocused&&(<span className={cls.caret} style={{left:`${caretPosition * 6}px`}}></span>)}

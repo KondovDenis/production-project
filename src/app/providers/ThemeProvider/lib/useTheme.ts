@@ -22,12 +22,12 @@ export function useTheme(): UseThemeResult {
 	document.body.className = newTheme
 	localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
         
-        setTheme(newTheme)
+        setTheme?.(newTheme)
 
 
     }
 
-    return {theme, 
+    return {theme: theme || Theme.LIGHT, 
             toggleTheme,
         }
 

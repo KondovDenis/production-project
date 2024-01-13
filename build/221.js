@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunkproduction_project=self.webpackChunkproduction_project||[]).push([[221],{221:(t,r,c)=>{c.r(r),c.d(r,{default:()=>n});var e=c(893),u=c(72);const n=function(){var t=(0,u.$G)("about").t;return(0,e.jsx)("div",{children:t("О сайте")})}}}]);
+"use strict";(self.webpackChunkproduction_project=self.webpackChunkproduction_project||[]).push([[221],{221:(t,e,r)=>{r.r(e),r.d(e,{default:()=>u});var c=r(893),o=r(72);const u=(0,r(294).memo)((function(){var t=(0,o.$G)("about").t;return(0,c.jsx)("div",{children:t("О сайте")})}))}}]);
