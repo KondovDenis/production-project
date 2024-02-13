@@ -26,15 +26,13 @@
     }
   ],
   "profile": {
-	  "first": "Denis",
-  	  "lastname": "Something",
-	  "age": 22,
-	  "currency": "RUB",
-	  "country": "Russian",
-	  "city": "Moscow",
-	  "username": "admin",
-	  "avatar": "https://avatars.githubusercontent.com/u/70274312?s=400&u=ed0ef6b35fc127774a7d41fdad8c68d600866f4d&v=4"
-
+    "first": "Denis",
+    "lastname": "Kondov",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Russian",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://avatars.githubusercontent.com/u/70274312?s=400&u=ed0ef6b35fc127774a7d41fdad8c68"
   }
 }
-

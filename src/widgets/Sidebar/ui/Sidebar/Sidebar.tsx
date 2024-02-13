@@ -17,21 +17,25 @@ import MainIcon from '../../../../shared/assets/icons/main-20-20.svg'
 import { SidebarItemType, SidebarItemsList } from './model/item';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from '../../../../entities/User';
 
 
 
 interface SidebarProps  {
+    item?:SidebarItemType;
     className?: string;
 }
 
 
 
 
-export const Sidebar: FC<SidebarProps> = memo(({className}:SidebarProps) => {
+export const Sidebar: FC<SidebarProps> = memo(({item,className}:SidebarProps) => {
 
     const {t} = useTranslation('navbar')
     const {theme, toggleTheme} = useTheme()
     const [collapsed, setCollapsed] = useState(false)
+    const isAuth = useSelector(getUserAuthData)
 
     const onToggle = () => {
         setCollapsed((prev) => !prev)
@@ -41,6 +45,7 @@ export const Sidebar: FC<SidebarProps> = memo(({className}:SidebarProps) => {
     	<SidebarItem item={item} collapsed={collapsed} key={item.path}></SidebarItem>	
 
     ), [collapsed])
+
 
     return(
 	<div data-testid='sidebar' className={classNames(cls.Sidebar,{ [cls.collapsed]:collapsed },[className])}>
