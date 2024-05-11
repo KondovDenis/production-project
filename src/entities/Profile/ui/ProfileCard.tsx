@@ -16,6 +16,11 @@ import { Select } from "../../../shared/ui/Select/Select"
 import { Currency, CurrencySelect } from "../../Currency"
 import { Country } from "../../Country/model/types/country"
 import { CountrySelect } from "../../Country"
+import { profileValidSchema } from "../model/services/validateProfileData/validateProfileData"
+import { useForm } from "react-hook-form"
+
+
+
 
 interface ProfileCardProps {
 	className?: string
@@ -40,6 +45,9 @@ export const ProfileCard = (props: ProfileCardProps) =>{
 
 	const {className, data, isLoading, readOnly, error, onChangeFirstname, onChangeLastname, onChangeCity, onChangeAge, onChangeUsername, onChangeAvatar, onChangeCurrency, onChangeCountry} = props
 
+
+
+
 	const {t} = useTranslation()
 	
 	if(isLoading){
@@ -52,7 +60,6 @@ export const ProfileCard = (props: ProfileCardProps) =>{
 		[cls.editing]: !readOnly,
 	}
 
-
 	return(
 		<div className={classNames(cls.ProfileCard, mods, [className])}>
 		  <div className={cls.data}>
@@ -61,8 +68,8 @@ export const ProfileCard = (props: ProfileCardProps) =>{
 		  	<Input value={data?.username} placeholder={t('Введите имя аккаунта')} className={cls.input} onChange={onChangeUsername} readOnly={readOnly}></Input>
 		  	<Input value={data?.first} placeholder={t('Ваше имя')} className={cls.input} onChange={onChangeFirstname} readOnly={readOnly}></Input>
 			<Input value={data?.lastname} placeholder={t('Ваша фамилия')} className={cls.input} onChange={onChangeLastname} readOnly={readOnly}></Input>
+			<Input value={data?.dateOfBirth} type="date" min="1900-01-01" max="2100-12-31" placeholder={t('Дата рождения')} className={cls.input} onChange={onChangeAge} readOnly={readOnly}></Input>
 			<Input value={data?.city} placeholder={t('Ваша город')} className={cls.input} onChange={onChangeCity} readOnly={readOnly}></Input>
-			<Input  type="date" min="1900-01-01" max="2100-12-31" placeholder={t('Дата рождения')} className={cls.input} onChange={onChangeAge} readOnly={readOnly}></Input>
 			<CurrencySelect className={cls.input} value={data?.currency} onChange={onChangeCurrency} readOnly={readOnly}></CurrencySelect>
 			<CountrySelect className={cls.input} value={data?.country} onChange={onChangeCountry} readOnly={readOnly}></CountrySelect>
 		  </div>

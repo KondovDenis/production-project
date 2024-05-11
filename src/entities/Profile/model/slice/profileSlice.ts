@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Profile, ProfileSchema } from "../types/profile";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
-
+import { profileValidSchema } from "../services/validateProfileData/validateProfileData";
 
 
 const initialState: ProfileSchema = {
@@ -46,10 +46,21 @@ export const profileSlice = createSlice({
 	    })
 	     //@ts-ignore
 	    .addCase(updateProfileData.fulfilled, (state, action)=>{
-		state.isLoading = false
-		state.data = action.payload
-		state.form = action.payload
-		state.readonly = true
+		try{
+		    profileValidSchema.validateSync(action.payload)
+		    state.isLoading = false
+		    state.data = action.payload
+		    state.form = action.payload
+		    state.readonly = true
+		}
+		
+		catch(error:any){
+		    if(error.name == 'ValidationError' ){
+			state.error = error.message
+			state.readonly = false
+		    }	
+		}
+
 	    })
 	    //@ts-ignore
 	    .addCase(updateProfileData.rejected, (state, action)=>{

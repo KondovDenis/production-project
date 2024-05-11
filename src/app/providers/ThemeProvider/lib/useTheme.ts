@@ -1,6 +1,7 @@
 import { LOCAL_STORAGE_THEME_KEY, Theme } from "./ThemeContext";
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
+import { defaults } from "lodash";
 
 
 
@@ -16,7 +17,18 @@ export function useTheme(): UseThemeResult {
 
 
     const toggleTheme = () => {
-        const newTheme = theme === Theme.DARK? Theme.LIGHT : Theme.DARK
+	let newTheme: Theme
+
+	switch(theme){
+	    case Theme.DARK:
+		newTheme = Theme.LIGHT
+	    	break
+	    case Theme.LIGHT:
+		newTheme = Theme.DARK
+	    	break
+	    default:
+		newTheme = Theme.LIGHT
+	}
         
 
 	document.body.className = newTheme

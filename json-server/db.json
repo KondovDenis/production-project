@@ -28,11 +28,12 @@
   "profile": {
     "first": "Denis",
     "lastname": "Kondov",
-    "age": 22,
+    "dateOfBirth": "1997-06-30",
     "currency": "RUB",
-    "country": "Russian",
+    "country": "Russia",
     "city": "Moscow",
     "username": "admin",
-    "avatar": "https://avatars.githubusercontent.com/u/70274312?s=400&u=ed0ef6b35fc127774a7d41fdad8c68"
+    "avatar": "https://avatars.githubusercontent.com/u/70274312?s=400&u=ed0ef6b35fc127774a7d41fdad8c68",
+    "age": null
   }
 }

@@ -5,9 +5,10 @@ import { Text } from "../../../../shared/ui/Text/Text";
 import { Button } from "../../../../shared/ui/Button/Button";
 import { ThemeButton } from "../../../../shared/ui/Button/Button";
 import { useSelector } from "react-redux";
-import { getProfileReadOnly, profileActions, updateProfileData } from "../../../../entities/Profile";
+import { getProfileData, getProfileError, getProfileReadOnly, profileActions, updateProfileData } from "../../../../entities/Profile";
 import { useAppDispatch } from "../../../../shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useCallback } from "react";
+import { profileValidSchema } from "../../../../entities/Profile/model/services/validateProfileData/validateProfileData";
 
 
 interface ProfilePageHeader {
@@ -16,12 +17,16 @@ interface ProfilePageHeader {
 
 export const ProfilePageHeader = (props: ProfilePageHeader) => {
 	
-    const {t} = useTranslation() 
+   const {t} = useTranslation() 
     
-    const {className,} = props
+   const {className,} = props
 	
    const readonly = useSelector(getProfileReadOnly)
 
+   const data = useSelector(getProfileData)
+
+   const error = useSelector(getProfileError)
+   
    const dispatch = useAppDispatch()
 
    const onEdit = useCallback(() => {
@@ -32,16 +37,17 @@ export const ProfilePageHeader = (props: ProfilePageHeader) => {
 	dispatch(profileActions.cancelEdit())
    }, [dispatch])
 
-   const onSave = useCallback(()=>{
+   const onSave = ()=>{
    	dispatch(updateProfileData())
-   },[dispatch])
+   }
 
 
     return(
         <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
 	    <Text title={t('Профиль')}></Text>
 	    {readonly?<Button className={cls.editBtn} theme={ThemeButton.OUTLINE} onClick={onEdit}>{t('Редактировать')}</Button>
-	    : <> 
+	    : <>
+	       {error&&<Text className={cls.error} title={t('Неправильно заполнена форма !')} text={error}></Text>}
 	      <Button className={cls.editBtn} theme={ThemeButton.OUTLINE} onClick={onCancelEdit}>{t('Отменить')}</Button> 
 	      <Button className={cls.saveBtn} theme={ThemeButton.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button> 
 	      </>}

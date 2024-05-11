@@ -5,7 +5,7 @@ import { Country } from "../../../Country/model/types/country"
 export interface Profile {
 	  "first"?: string
   	  "lastname"?: string
-	  "age"?: number
+	  "dateOfBirth"?: string
 	  "currency"?: Currency
 	  "country"?: Country
 	  "city"?: string
