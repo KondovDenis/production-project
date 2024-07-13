@@ -22,7 +22,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         output: {
             filename: "[name].js",
             path: paths.build,
-            clean: true
+            clean: true,
+	    publicPath: '/',
         },
         plugins: buildPlugins(options),
         devtool: isDev ? 'inline-source-map' : undefined,

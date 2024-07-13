@@ -9,6 +9,7 @@ import { ProfileSchema } from "../../../../entities/Profile";
 import { AxiosInstance } from "axios";
 import { NavigateOptions } from "react-router-dom";
 import { To } from "react-router-dom";
+import { ArticleDetailsSchema } from "../../../../entities/Articles";
 
 
 export interface CounterState{
@@ -22,6 +23,7 @@ export interface StateSchema{
     user: UserSchema;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
 }
 
 
