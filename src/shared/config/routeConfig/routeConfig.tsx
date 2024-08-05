@@ -6,8 +6,7 @@ import { NotFoundPage } from "../../../pages/NotFoundPage"
 import React, {Component} from "react"
 import { ProfilePage } from "../../../pages/ProfilePage"
 import { ArticlesPage } from "../../../pages/ArticlesPage"
-import { ArticleDetailsPage } from "../../../pages/ArticleDetailsPage"
-
+import ArticleDetailsPage from "../../../pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage"
 
 export type AppRoutesProps = RouteProps & {
 	authOnly?: boolean

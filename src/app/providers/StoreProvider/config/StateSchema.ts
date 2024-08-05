@@ -10,6 +10,7 @@ import { AxiosInstance } from "axios";
 import { NavigateOptions } from "react-router-dom";
 import { To } from "react-router-dom";
 import { ArticleDetailsSchema } from "../../../../entities/Articles";
+import { ArticleDetailsCommentsSchema } from "../../../../pages/ArticleDetailsPage";
 
 
 export interface CounterState{
@@ -24,6 +25,7 @@ export interface StateSchema{
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 
