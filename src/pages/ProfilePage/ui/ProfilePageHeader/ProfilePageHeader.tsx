@@ -9,6 +9,7 @@ import { getProfileData, getProfileError, getProfileReadOnly, profileActions, up
 import { useAppDispatch } from "../../../../shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useCallback } from "react";
 import { profileValidSchema } from "../../../../entities/Profile/model/services/validateProfileData/validateProfileData";
+import { getUserAuthData } from "../../../../entities/User";
 
 
 interface ProfilePageHeader {
@@ -29,6 +30,12 @@ export const ProfilePageHeader = (props: ProfilePageHeader) => {
    
    const dispatch = useAppDispatch()
 
+   const authData = useSelector(getUserAuthData)
+
+   const profileData = useSelector(getProfileData)
+
+   const canEdit = authData?.id === profileData?.id
+
    const onEdit = useCallback(() => {
 	dispatch(profileActions.setReadOnly(false))
    }, [dispatch])
@@ -45,12 +52,17 @@ export const ProfilePageHeader = (props: ProfilePageHeader) => {
     return(
         <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
 	    <Text title={t('Профиль')}></Text>
-	    {readonly?<Button className={cls.editBtn} theme={ThemeButton.OUTLINE} onClick={onEdit}>{t('Редактировать')}</Button>
+	    {canEdit && (
+	    <div className={cls.btnsWrapper}>
+	        {readonly?<Button className={cls.editBtn} theme={ThemeButton.OUTLINE} onClick={onEdit}>{t('Редактировать')}</Button>
 	    : <>
 	       {error&&<Text className={cls.error} title={t('Неправильно заполнена форма !')} text={error}></Text>}
 	      <Button className={cls.editBtn} theme={ThemeButton.OUTLINE} onClick={onCancelEdit}>{t('Отменить')}</Button> 
 	      <Button className={cls.saveBtn} theme={ThemeButton.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button> 
 	      </>}
+
+	    </div>
+	    )} 
         </div>
     )
 }

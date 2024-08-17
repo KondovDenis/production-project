@@ -21,6 +21,7 @@ import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleT
 import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent"
 import { useCallback } from "react"
 import { ArticleBlock } from "../../model/types/types"
+import { useDispatch } from "react-redux"
 
 interface ArticleDetailsProps {
 	className?:string
@@ -34,10 +35,9 @@ const reducers: ReducersList = {
 
 export const ArticleDetails = memo((props:ArticleDetailsProps) => {
 	const {className, id} = props
-	const dispatch = useAppDispatch()
+	const dispatch = useDispatch()
 
 	const isLoading = useSelector(getArticleDetailsIsLoading)
-	//const isLoading = true
 	const article = useSelector(getArticleDetailsData)
 	const error = useSelector(getArticleDetailsOnError)
 
@@ -55,8 +55,9 @@ export const ArticleDetails = memo((props:ArticleDetailsProps) => {
          }, [])
 
 	useEffect(()=>{
+		//@ts-ignore
 		dispatch(fetchArticleById(id))
-	},[dispatch, id])
+	},[dispatch])
 
 	let content
 

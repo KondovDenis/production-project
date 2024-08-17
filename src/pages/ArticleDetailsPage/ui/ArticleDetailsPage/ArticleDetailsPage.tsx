@@ -19,6 +19,8 @@ import { useAppDispatch } from '../../../../shared/lib/hooks/useAppDispatch/useA
 import { DynamicModuleLoader } from '../../../../shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsCommentsReducer } from '../../model/slices/articleDetailsCommentsSlice';
 import { ReducersList } from '../../../../shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { AddCommentForm } from '../../../../features/addCommentForm';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -38,6 +40,10 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const error = useSelector(getArticleDetailsOnError)
     const dispatch = useDispatch()
 
+    const onSendComment = useCallback((text:string)=>{
+        //@ts-ignore
+	dispatch(addCommentForArticle(text))
+    },[dispatch])
 
     useEffect(()=>{
     	//@ts-ignore
@@ -58,6 +64,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         	<ArticleDetails id={id}></ArticleDetails>
 		{error? null : <Text title={t('Комментарии')}></Text>}
+		{error? null: <AddCommentForm onSendComment={onSendComment}></AddCommentForm>}
 		{error? null: <CommentList comments={comments} isLoading={commentsIsLoading}></CommentList>}
 	</div>
     </DynamicModuleLoader>

@@ -3,6 +3,7 @@ import { Country } from "../../../Country/model/types/country"
 
 
 export interface Profile {
+	  "id"?: string
 	  "first"?: string
   	  "lastname"?: string
 	  "dateOfBirth"?: string

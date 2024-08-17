@@ -12,7 +12,8 @@ import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { getProfileForm } from "../../../entities/Profile";
 import { Currency } from "../../../entities/Currency";
 import { Country } from "../../../entities/Country";
-
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 
@@ -29,13 +30,19 @@ interface ProfilePageProps{
 const ProfilePage = ({className}:ProfilePageProps) => {
 	const {t} = useTranslation()
 	
-	const dispatch = useAppDispatch()
+	const dispatch = useDispatch()
 	const formData = useSelector(getProfileForm)
 	const isLoading = useSelector(getProfileIsLoading)
 	const error = useSelector(getProfileError)
 	const readOnly = useSelector(getProfileReadOnly)
+	const {id} = useParams<{id:string}>()
 
-	useEffect(()=>{dispatch(fetchProfileData())},[dispatch])
+	useEffect(()=>{
+		if(id){
+		  //@ts-ignore
+		  dispatch(fetchProfileData(id))
+		}
+	},[dispatch])
 	
 	const onChangeFirstname = useCallback((value?:string)=>{
 	    

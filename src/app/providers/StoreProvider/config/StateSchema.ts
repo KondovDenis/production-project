@@ -11,6 +11,7 @@ import { NavigateOptions } from "react-router-dom";
 import { To } from "react-router-dom";
 import { ArticleDetailsSchema } from "../../../../entities/Articles";
 import { ArticleDetailsCommentsSchema } from "../../../../pages/ArticleDetailsPage";
+import { AddCommentFormSchema } from "../../../../features/addCommentForm";
 
 
 export interface CounterState{
@@ -26,6 +27,7 @@ export interface StateSchema{
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
+    addCommentForm?: AddCommentFormSchema;
 }
 
 
